@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 
 # salary data: https://www.kaggle.com/datasets/abhishek14398/salary-dataset-simple-linear-regression/data
-DATA = "salary_dataset.csv"
-TRIVIAL = "trivial_case.csv"
+DATA = "data/salary_dataset.csv"
+TRIVIAL = "data/trivial_case.csv"
 PATH = DATA
 
 def simple_linear_regression():
@@ -78,8 +78,8 @@ def plot(alpha, beta):
     plt.title("Simple Linear Regression")
     plt.xlabel("Years of Experience")
     plt.ylabel("Salary")
-    plt.savefig("residuals.png")
-    #plt.show()
+    #plt.savefig("plots/residuals.png")
+    plt.show()
 
 
 alpha, beta = simple_linear_regression()
@@ -91,7 +91,7 @@ plt.scatter(df["YearsExperience"], df["Salary"])
 plt.title("Simple Linear Regression")
 plt.xlabel("Years of Experience")
 plt.ylabel("Salary")
-plt.savefig("perfect_line.png")"""
+plt.savefig("plots/perfect_line.png")"""
 
 #plot(alpha, beta)
 #plot_residuals_by_predicted(alpha, beta)
