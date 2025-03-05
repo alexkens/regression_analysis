@@ -4,7 +4,9 @@ import matplotlib.pyplot as plt
 
 
 # salary data: https://www.kaggle.com/datasets/abhishek14398/salary-dataset-simple-linear-regression/data
-PATH = "salary_dataset.csv"
+DATA = "salary_dataset.csv"
+TRIVIAL = "trivial_case.csv"
+PATH = DATA
 
 def simple_linear_regression():
     df = pd.read_csv(PATH)
@@ -18,6 +20,9 @@ def simple_linear_regression():
     denominator = sum([(xi - mu_x) ** 2 for xi in x])
     beta = numerator / denominator
     alpha = mu_y - beta * mu_x
+
+    U = [round(xi * beta + alpha, 2) for xi in x]
+    print(U)
 
     return alpha, beta
 
@@ -73,10 +78,20 @@ def plot(alpha, beta):
     plt.title("Simple Linear Regression")
     plt.xlabel("Years of Experience")
     plt.ylabel("Salary")
-    
-    plt.show()
+    plt.savefig("residuals.png")
+    #plt.show()
 
 
 alpha, beta = simple_linear_regression()
 print(alpha, beta)
-plot_residuals_by_predicted(alpha, beta)
+plot(alpha, beta)
+
+"""df = pd.read_csv("perfect_line.csv")
+plt.scatter(df["YearsExperience"], df["Salary"])
+plt.title("Simple Linear Regression")
+plt.xlabel("Years of Experience")
+plt.ylabel("Salary")
+plt.savefig("perfect_line.png")"""
+
+#plot(alpha, beta)
+#plot_residuals_by_predicted(alpha, beta)
