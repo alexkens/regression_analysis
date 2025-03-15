@@ -50,8 +50,9 @@ def plot(path, ind_var, dep_var, residual_flag=False, save_flag=False):
     plt.scatter(df[ind_var], df[dep_var])
     
     # line
-    x1 = df[ind_var].values[0]
-    x2 = df[ind_var].values[-1]
+    sorted_list = sorted(df[ind_var].values)
+    x1 = sorted_list[0]
+    x2 = sorted_list[-1]
     y1 = alpha + beta * x1
     y2 = alpha + beta * x2
     plt.plot([x1, x2], [y1, y2], c="g")
@@ -107,4 +108,4 @@ print("{:.2f}, {:.2f}".format(error1, error2))
 
 # plot(DATA_SALARY, "YearsExperience", "Salary", save_flag=True)
 # plot(DATA_INSURANCE, "age", "charges", save_flag=False)
-plot(DATA_INSURANCE, "age", "charges", save_flag=False)
+plot(DATA_ADS, "TV", "Sales", save_flag=True)
