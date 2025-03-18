@@ -4,11 +4,14 @@ import matplotlib.pyplot as plt
 
 
 # salary data: https://www.kaggle.com/datasets/abhishek14398/salary-dataset-simple-linear-regression/data
+# insurance data: https://www.kaggle.com/datasets/mirichoi0218/insurance
+# ad data: https://www.kaggle.com/code/ashydv/sales-prediction-simple-linear-regression
+
 DATA_SALARY = "data/salary_dataset.csv"
 DATA_INSURANCE = "data/insurance.csv"
 DATA_ADS = "data/advertising.csv"
 TRIVIAL = "data/trivial_case.csv"
-#PATH = DATA
+
 
 def simple_linear_regression(path, ind_var, dep_var):
     df = pd.read_csv(path)
@@ -24,6 +27,10 @@ def simple_linear_regression(path, ind_var, dep_var):
     alpha = mu_y - beta * mu_x
 
     return alpha, beta
+
+
+def multiple_linear_regression(path, ind_vars, dep_var):
+    pass
 
 
 def plot_residuals_by_predicted(alpha, beta, path):
@@ -84,7 +91,9 @@ def plot(path, ind_var, dep_var, residual_flag=False, save_flag=False):
         print(s)
         if ".csv" in s:
             s = s.replace("data/", "").replace(".csv", "")
-        plt.savefig(s, format="png")
+            print(s)
+        #plt.savefig(s, format="png")
+        plt.savefig(f"{s}.png")
     else:
         plt.show()
     plt.close()
@@ -108,4 +117,6 @@ print("{:.2f}, {:.2f}".format(error1, error2))
 
 # plot(DATA_SALARY, "YearsExperience", "Salary", save_flag=True)
 # plot(DATA_INSURANCE, "age", "charges", save_flag=False)
-plot(DATA_ADS, "TV", "Sales", save_flag=True)
+# plot(DATA_ADS, "TV", "Sales", save_flag=True)
+error3 = get_squared_error(DATA_ADS, "TV", "Sales")
+print(error3)
